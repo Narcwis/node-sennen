@@ -1,4 +1,4 @@
-const axios = require("./axios");
+const axios = require("./helpers/axios");
 const { getCoordinatesList, getRandomInRange, timeParser, getEarliestSunriseIndex } = require("./helpers");
 
 const getData = (lat, lng) => {

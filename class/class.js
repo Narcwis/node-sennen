@@ -1,4 +1,4 @@
-const axios = require("../axios");
+const axios = require("../helpers/axios");
 const { timeParser, getEarliestSunriseIndex } = require("../helpers");
 class BallOfFireDetails {
     constructor(listOfCoordinates) {
