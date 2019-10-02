@@ -2,23 +2,11 @@ const axios = require("./helpers/axios");
 const { getCoordinatesList, getRandomInRange, timeParser, getEarliestSunriseIndex } = require("./helpers");
 
 const getData = (lat, lng) => {
-    // return axios.get(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}`);
-
-    return {
-        results: {
-            sunrise: `${getRandomInRange(0, 12, 0)}:${getRandomInRange(0, 59, 0)}:${getRandomInRange(0, 59, 0)} AM`
-        }
-    };
+    return axios.get(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}`);
 };
 
-// for loop enclosed in function finding earliest sunrise and returning index
-
-//wrap whole thing in class
-
-//try to make it in typescript
-
 (async () => {
-    const coordsList = getCoordinatesList();
+    const coordsList = getCoordinatesList(100);
     const promiseList = coordsList.map(i => getData(i.lat, i.lng));
     const dataList = await Promise.all(promiseList);
     const earliestSunriseIndex = getEarliestSunriseIndex(dataList, timeParser);
